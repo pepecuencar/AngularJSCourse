@@ -1,9 +1,14 @@
 'use strict';
-angular.module('confusionApp', []).controller('menuController', function() {
-  this.tab = 1;
-  this.filtText = '';
+angular.module('confusionApp', [])
+    .controller('MenuController', ['$scope', function($scope) {
   
-  var dishes = [
+            $scope.tab = 1;
+  
+            $scope.filtText = '';
+  
+            $scope.showDetails =false;
+        
+            $scope.dishes=[
     {
       name:'Uthapizza',
       image: 'images/uthapizza.png',
@@ -13,7 +18,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
       description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
       comment: ''
     },
-    
     {
       name:'Zucchipakoda',
       image: 'images/zucchipakoda.png',
@@ -23,7 +27,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
       description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
       comment: ''
     },
-    
     {
       name:'Vadonut',
       image: 'images/vadonut.png',
@@ -33,7 +36,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
       description:'A quintessential ConFusion experience, is it a vada or is it a donut?',
       comment: ''
     },
-    
     {
       name:'ElaiCheese Cake',
       image: 'images/elaicheesecake.png',
@@ -44,27 +46,28 @@ angular.module('confusionApp', []).controller('menuController', function() {
       comment: ''
     }
   ]; 
-  
-  this.dishes = dishes;
-
-  this.select = function(setTab) {
-    this.tab = setTab;
-    
-    if (setTab === 2) {
-      this.filtText = "appetizer";
-    } 
-    else if (setTab === 3) {
-      this.filtText = "mains";
-    }
-    else if (setTab === 4) {
-      this.filtText = "dessert";
-    }
-    else {
-      this.filtText = "";
-    }
-  };
-  
-  this.isSelected = function (checkTab) {
-    return (this.tab === checkTab);
-  };
-});
+          $scope.select = function(setTab) {
+            $scope.tab = setTab;
+            if (setTab === 2) {
+                $scope.filtText = "appetizer";
+            } 
+            else if (setTab === 3) {
+                $scope.filtText = "mains";
+            }
+            else if (setTab === 4) {
+                $scope.filtText = "dessert";
+            }
+            else {
+                $scope.filtText = "";
+            }
+        };
+        
+        $scope.isSelected = function (checkTab) {
+            return ($scope.tab === checkTab);
+        };
+        
+        $scope.toggleDetails = function() {
+            $scope.showDetails = !$scope.showDetails;
+};
+        
+    }]);
