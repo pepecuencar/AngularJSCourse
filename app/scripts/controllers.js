@@ -37,7 +37,6 @@ angular.module('confusionApp')
         
         
     }])
-
     .controller('ContactController', ['$scope', function($scope) {
             $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
@@ -61,5 +60,10 @@ angular.module('confusionApp')
                 }
                     
             };
-    }]);
+    }])
+
+.controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function($scope, $routeParams, menuFactory) {
+
+            var dish= menuFactory.getDish(parseInt($routeParams.id,10));                        $scope.dish = dish;
+                    }]);
 ;
